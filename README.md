@@ -25,6 +25,6 @@ Constraints:
 - PLACE 0,0,NORTH; MOVE; REPORT   //Output: 0,1,NORTH
 - PLACE 0,0,NORTH; LEFT; REPORT  //Output: 0,0,WEST
 - PLACE 1,2,EAST; MOVE; MOVE; LEFT; MOVE; REPORT   //Output: 3,3,NORTH
-
+- place 0,0,east; move; move ; move; move; move; move; move; report  //Output: 4,0,EAST
 
 
