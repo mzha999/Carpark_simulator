@@ -1,7 +1,7 @@
 // Carpark Simulator
 import CarPark from "./Carpark.mjs";
 
-"use strict";
+("use strict");
 
 const Robot = (commends) => {
   const parkX = 5;
@@ -23,12 +23,6 @@ const Robot = (commends) => {
     commendArray.push(commend);
   }
 
-  // Invalid Command
-  console.log(commendArray);
-  const invalidCommand = (item) => {
-    console.log("INVALID COMMAND: '" + item.join(" ") + "' Please try again.");
-  };
-
   // Returns the index of the direction string
   const indexOfDirection = (direct) => directs.indexOf(direct);
 
@@ -38,7 +32,7 @@ const Robot = (commends) => {
     const dir = indexOfDirection(placeCommend[1][2]);
     return x >= 0 && x <= parkX && y >= 0 && y <= parkY && dir > -1;
   };
-  // Sets the placement
+  // Set the placement
   const place = (placeCommend) => {
     if (checkPlaceCommend(placeCommend)) {
       robotIsPlaced = true;
@@ -48,7 +42,7 @@ const Robot = (commends) => {
     }
   };
 
-  // robot turn left or turn right.
+  // bus turn left or turn right.
   const turn = (turn) => {
     directIndex = (directIndex + (turn == "LEFT" ? 3 : 1)) % 4;
   };
@@ -56,27 +50,28 @@ const Robot = (commends) => {
   const canMove = () => {
     switch (directIndex) {
       case 0:
-        return robotY <= parkY;
+        return robotY < parkY - 1;
       case 1:
-        return robotX <= parkX;
+        return robotX < parkX - 1;
       case 2:
-        return robotY >= 0;
+        return robotY > 0;
       case 3:
-        return robotX >= 0;
+        return robotX > 0;
       default:
-        console.log("Invalid index");
+        return false;
     }
   };
 
   const move = () => {
-
-    if (directIndex % 2 == 1) {  // x-axial
+    if (directIndex % 2 == 1) {
+      // x-axial
       if (directIndex == 1) {
         robotX++;
       } else {
         robotX--;
       }
-    } else {  // y-axial
+    } else {
+      // y-axial
       if (directIndex == 0) {
         robotY++;
       } else {
@@ -96,14 +91,14 @@ const Robot = (commends) => {
         place(commendItem);
         break;
       case "MOVE":
-        robotIsPlaced && canMove() ? move() : invalidCommand(commendItem);
+        robotIsPlaced && canMove() ? move() : console.log("Hit park border, cannot move this way, please turn." );
         break;
-      case "LEFT": // fall-through cases
+      case "LEFT": // fall-through case
       case "RIGHT":
-        robotIsPlaced ? turn(commendItem[0]) : invalidCommand(commendItem);
+        robotIsPlaced ? turn(commendItem[0]) : console.log("Invalid commend.");
         break;
       case "REPORT":
-        robotIsPlaced ? report() : invalidCommand(commendItem);
+        robotIsPlaced ? report() : console.log("Invalid commend.");
         break;
       default:
         invalidCommand(commendItem);
@@ -111,7 +106,22 @@ const Robot = (commends) => {
     }
   });
 };
-
+Robot([
+  "PLACE 0,4,SOUTH",
+  "MOVE",
+  "MOVE",
+  "MOVE",
+  "MOVE",
+  "MOVE",
+  "MOVE",
+  "MOVE",
+  "MOVE",
+  "MOVE",
+  "MOVE",
+  "REPORT",
+]);
 // let park = new CarPark(5, 5);
 // park.printPark(x, y);
 
+// Robot(["PLACE 1,2,EAST", "MOVE", "MOVE", "LEFT", "MOVE", "REPORT"]);
+// Robot(["PLACE 0,0,EAST","MOVE","LEFT","MOVE","LEFT","MOVE","LEFT","MOVE", "REPORT"]);
