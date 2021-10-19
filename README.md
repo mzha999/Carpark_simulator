@@ -5,11 +5,11 @@ Description
 - The bus is free to roam around the carpark, but must be prevented from exiting the  carpark. Any movement that would result in the bus leaving the carpark must be  prevented, however further valid movement commands must still be allowed. 
 
 The application should be able to read in any one of the following commands: 
-PLACE X,Y,F  
-MOVE  
-LEFT 
-RIGHT  
-REPORT 
+- PLACE X,Y,F  
+- MOVE  
+- LEFT 
+- RIGHT  
+- REPORT 
 
 - PLACE will put the bus in the carpark in position X,Y and facing NORTH, SOUTH,  EAST or WEST. 
 - The origin (0,0) can be considered to be the SOUTH WEST most corner. - The first valid command to the bus is a PLACE command, after that, any sequence of  commands may be issued, in any order, including another PLACE command. The  application should discard all commands in the sequence until a valid PLACE  command has been executed. 
