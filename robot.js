@@ -89,7 +89,7 @@ const Robot = (commends) => {
     console.log([robotX, robotY, directs[directIndex]].join(","));
   };
 
-  // Go the commends order
+  // Go through commends order
   commendArray.forEach((commendItem) => {
     switch (commendItem[0]) {
       case "PLACE":
@@ -115,11 +115,3 @@ const Robot = (commends) => {
 // let park = new CarPark(5, 5);
 // park.printPark(x, y);
 
-Robot(["PLACE 0,0,EAST", "MOVE", "REPORT"]);
-// Test cases
-// Robot(["PLACE 1,2,EAST", "MOVE", "MOVE", "LEFT", "MOVE", "REPORT"]);
-// Robot(["PLACE 6,6,EAST", "MOVE", "MOVE", "LEFT", "MOVE", "REPORT"]);
-// Robot(["PLACE 0,0,EAST","MOVE","LEFT","MOVE","LEFT","MOVE","LEFT","MOVE", "REPORT"]); //Output: 0,0,SOUTH
-// Robot(["PLACE 0,0,NORTH","MOVE","REPORT"]);  Output: 0,1,NORTH
-// Robot(["PLACE 0,0,NORTH","LEFT","REPORT"]); Output: 0,0,WEST
-// Robot(["PLACE 1,2,EAST","MOVE","MOVE","LEFT","MOVE","REPORT"]);  Output: 3,3,NORTH
