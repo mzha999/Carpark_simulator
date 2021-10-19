@@ -1,5 +1,7 @@
 // Carpark Simulator
-import CarPark from "./Carpark.mjs";
+import CarPark from "./Carpark.js";
+import { createRequire } from "module";
+const require = createRequire(import.meta.url);
 
 ("use strict");
 
@@ -91,7 +93,9 @@ const Robot = (commends) => {
         place(commendItem);
         break;
       case "MOVE":
-        robotIsPlaced && canMove() ? move() : console.log("Hit park border, cannot move this way, please turn." );
+        robotIsPlaced && canMove()
+          ? move()
+          : console.log("Hit park border, cannot move this way, please turn.");
         break;
       case "LEFT": // fall-through case
       case "RIGHT":
@@ -101,27 +105,43 @@ const Robot = (commends) => {
         robotIsPlaced ? report() : console.log("Invalid commend.");
         break;
       default:
-        invalidCommand(commendItem);
+        console.log(
+          "INVALID COMMAND: '" + commendItem.join(" ") + "' Please try again."
+        );
         break;
     }
   });
+  console.log(commends);
 };
-Robot([
-  "PLACE 0,4,SOUTH",
-  "MOVE",
-  "MOVE",
-  "MOVE",
-  "MOVE",
-  "MOVE",
-  "MOVE",
-  "MOVE",
-  "MOVE",
-  "MOVE",
-  "MOVE",
-  "REPORT",
-]);
+// Robot([
+//   "PLACE 0,4,SOUTH",
+//   "MOVE",
+//   "MOVE",
+//   "MOVE",
+//   "MOVE",
+//   "MOVE",
+//   "MOVE",
+//   "MOVE",
+//   "MOVE",
+//   "MOVE",
+//   "MOVE",
+//   "REPORT",
+// ]);
 // let park = new CarPark(5, 5);
 // park.printPark(x, y);
 
 // Robot(["PLACE 1,2,EAST", "MOVE", "MOVE", "LEFT", "MOVE", "REPORT"]);
 // Robot(["PLACE 0,0,EAST","MOVE","LEFT","MOVE","LEFT","MOVE","LEFT","MOVE", "REPORT"]);
+
+const readline = require("readline").createInterface({
+  input: process.stdin,
+  output: process.stdout,
+});
+
+readline.question(`Place your bus in the park and start move: `, (commend) => {
+  let order = commend.split(";").map((value)=>{
+      return value.trim()
+  });
+  Robot(order);
+  readline.close();
+});

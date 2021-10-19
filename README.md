@@ -18,13 +18,13 @@ Constraints:
 
 ### Note
 - This car park simulator is running in node.js, please install node on the computer
-- running terminal with commend like: Robot(["PLACE 0,0,EAST", "MOVE", "REPORT"]);
+- running terminal with commends seperated with ";", **exaple: place 2,3; move; move; left; report**
 
 ### Test cases
-- Robot(["PLACE 0,0,EAST","MOVE","LEFT","MOVE","LEFT","MOVE","LEFT","MOVE", "REPORT"]); //Output: 0,0,SOUTH
-- Robot(["PLACE 0,0,NORTH","MOVE","REPORT"]);  Output: 0,1,NORTH
-- Robot(["PLACE 0,0,NORTH","LEFT","REPORT"]); Output: 0,0,WEST
-- Robot(["PLACE 1,2,EAST","MOVE","MOVE","LEFT","MOVE","REPORT"]);  Output: 3,3,NORTH
+- PLACE 0,0,EAST; MOVE; LEFT; MOVE; LEFT; MOVE; LEFT; MOVE; REPORT  //Output: 0,0,SOUTH
+- PLACE 0,0,NORTH; MOVE; REPORT   //Output: 0,1,NORTH
+- PLACE 0,0,NORTH; LEFT; REPORT  //Output: 0,0,WEST
+- PLACE 1,2,EAST; MOVE; MOVE; LEFT; MOVE; REPORT   //Output: 3,3,NORTH
 
 
 
